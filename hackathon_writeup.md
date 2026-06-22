@@ -69,7 +69,7 @@ The orchestrator manages the lifecycle of the query. It receives the raw input, 
 This agent acts as the system's eyes and ears on the live web. Using the keyless `duckduckgo-search` service, it performs two distinct search queries: one focused on market sizing, growth, and trends, and a second targeted at competitor reviews, forum complaints, and pain points. It returns a structured index of links, titles, and snippets.
 
 ### 3. The VC Mentor Agent
-This agent is powered by **Gemini 3.1 Flash** (via the new `google-genai` SDK). Using structured outputs, it is constrained by a strict Pydantic model (`AnalysisResult`). It processes the research snippets, extracts competitors, grades pain points, and outputs scored opportunities. If the Gemini API experiences temporary 503 load errors, the agent utilizes a 3-attempt backoff retry loop before falling back to local mock data.
+This agent is powered by **Gemini 3.1 Flash Lite** (via the new `google-genai` SDK). Using structured outputs, it is constrained by a strict Pydantic model (`AnalysisResult`). It processes the research snippets, extracts competitors, grades pain points, and outputs scored opportunities. If the Gemini API experiences temporary 503 load errors, the agent utilizes a 3-attempt backoff retry loop before falling back to local mock data.
 
 ---
 
