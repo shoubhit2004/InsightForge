@@ -2,7 +2,7 @@
 
 [![Next.js](https://img.shields.io/badge/Next.js-15-black?style=flat&logo=next.js)](https://nextjs.org)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.100%2B-009688?style=flat&logo=fastapi)](https://fastapi.tiangolo.com)
-[![Gemini](https://img.shields.io/badge/Gemini--API-2.5--Flash-blue?style=flat&logo=google)](https://ai.google.dev)
+[![Gemini](https://img.shields.io/badge/Gemini--API-3.1--Flash-blue?style=flat&logo=google)](https://ai.google.dev)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=flat&logo=typescript)](https://www.typescriptlang.org)
 [![SQLite](https://img.shields.io/badge/SQLite-3-003B57?style=flat&logo=sqlite)](https://www.sqlite.org)
 
@@ -54,7 +54,7 @@ InsightForge is an AI-powered Opportunity Discovery Platform designed to help fo
 InsightForge orchestrates the discovery workflow using two specialized agents:
 
 1. **Web Research Agent:** Periodically queries search engines using the `duckduckgo-search` library to pull live market indicators, competitors, and user reviews.
-2. **VC Analysis Agent:** Powered by **Gemini 2.5 Flash** (with fallback to `gemini-1.5-flash` or mock context). This agent processes search signals, maps competitor vulnerabilities, rates opportunities, and generates co-founder recommendations using structured JSON outputs.
+2. **VC Analysis Agent:** Powered by **Gemini 3.1 Flash** (with fallback to mock context). This agent processes search signals, maps competitor vulnerabilities, rates opportunities, and generates co-founder recommendations using structured JSON outputs.
 
 ---
 
@@ -62,7 +62,7 @@ InsightForge orchestrates the discovery workflow using two specialized agents:
 
 * **Frontend:** Next.js (App Router), TypeScript, TailwindCSS v4, Lucide Icons.
 * **Backend:** FastAPI, Python, Pydantic, SQLAlchemy.
-* **AI:** Google GenAI SDK (`gemini-2.5-flash`), Pydantic Response Schemas.
+* **AI:** Google GenAI SDK (`gemini-3.1-flash`), Pydantic Response Schemas.
 * **Search:** `duckduckgo-search` library (free & keyless).
 * **Database:** SQLite.
 
