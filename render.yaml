@@ -1,0 +1,39 @@
+# Render Blueprint Specification for InsightForge
+# Deploy both Backend and Frontend with a single configuration.
+# For details, see: https://render.com/docs/blueprints
+
+services:
+  # -------------------------------------------------------------
+  # Backend Service: FastAPI + Python
+  # -------------------------------------------------------------
+  - type: web
+    name: insightforge-backend
+    env: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: ENVIRONMENT
+        value: production
+      - key: DATABASE_URL
+        value: sqlite:///./insightforge.db
+      - key: GEMINI_API_KEY
+        sync: false # Render will prompt the user to input this value during deployment
+      - key: PORT
+        value: 10000
+
+  # -------------------------------------------------------------
+  # Frontend Service: Next.js + React + Node
+  # -------------------------------------------------------------
+  - type: web
+    name: insightforge-frontend
+    env: node
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    startCommand: npm run start
+    envVars:
+      - key: NEXT_PUBLIC_API_URL
+        fromService:
+          type: web
+          name: insightforge-backend
+          property: url

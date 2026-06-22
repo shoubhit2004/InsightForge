@@ -21,16 +21,26 @@ app.include_router(research.router)
 app.include_router(reports.router)
 
 
-# CORS configuration to allow local Next.js frontend calls
+# CORS configuration to allow local and deployed frontend calls
+import os
 origins = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
 ]
 
+allowed_origins_env = os.getenv("ALLOWED_ORIGINS")
+if allowed_origins_env:
+    origins = [origin.strip() for origin in allowed_origins_env.split(",") if origin.strip()]
+    allow_all_origins = False
+else:
+    # Default to allow all in development/production for ease of deployment
+    origins = ["*"]
+    allow_all_origins = True
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
-    allow_credentials=True,
+    allow_credentials=not allow_all_origins,  # Must be False if allow_origins contains "*"
     allow_methods=["*"],
     allow_headers=["*"],
 )
