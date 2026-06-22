@@ -33,7 +33,4 @@ services:
     startCommand: npm run start
     envVars:
       - key: NEXT_PUBLIC_API_URL
-        fromService:
-          type: web
-          name: insightforge-backend
-          property: url
+        sync: false # Render will prompt you for the backend's public URL (e.g., https://insightforge-backend.onrender.com)
